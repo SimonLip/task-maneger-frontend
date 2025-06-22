@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchBoards, fetchBoardWithCards, updateCard, createBoard, deleteAllBoards } from '../store/boardThunks';
 import CreateCardForm from './CreateCardForm';
 import DeleteCardButton from './DeleteCardButton';
-import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable, DropResult } from '@hello-pangea/dnd';
 import './BoardsList.css';
 import toast from 'react-hot-toast';
 
