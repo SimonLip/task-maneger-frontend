@@ -86,7 +86,6 @@ const BoardsList = () => {
     <div className="boards-container">
       <h1 className="boards-title">Boards</h1>
 
-      {/* Введення нового борду */}
       <div className="boards-load">
         <input
           type="text"
@@ -99,9 +98,8 @@ const BoardsList = () => {
         <button onClick={handleDeleteAll} className="boards-delete-all-button">Delete All</button>
       </div>
 
-      {/* Список збережених бордів */}
       <div className="boards-list">
-        <h3>Saved Boards:</h3>
+        <h3 className='boards-name'>Saved Boards:</h3>
         <div className="boards-buttons">
           {boards.map((board) => (
             <button
