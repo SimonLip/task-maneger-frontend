@@ -1,0 +1,165 @@
+.boards-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.boards-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.boards-columns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.boards-column {
+  background-color: #ddd;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 400px;
+}
+
+.boards-column-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.boards-card {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.boards-card-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.boards-card-description {
+  margin-bottom: 10px;
+  color: #555;
+  padding: 5px;
+}
+
+.boards-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  
+}
+
+.boards-card-edit,
+.boards-card-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-card-button {
+  border: 2px solid black;
+  background-color: white;
+  font-size: 32px;
+  text-align: center;
+  cursor: pointer;
+  padding: 50px 0;
+  border-radius: 4px;
+  min-width: 100%;
+}
+
+.boards-load {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  width: 100%;
+  justify-content: center;
+}
+
+.boards-input {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.boards-load-button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.boards-load-button:hover {
+  background-color: #f0f0f0;
+}
+
+.boards-add-card-form {
+  
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.boards-card.editing {
+  border: none;
+  padding: 0;
+}
+
+
+.boards-add-card-input {
+  
+  padding: 8px;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.boards-add-card-button {
+  
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.boards-add-card-button:hover {
+  background-color: #f0f0f0;
+}
+
+.boards-delete-all-button {
+  padding: 10px 20px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.boards-delete-all-button:hover {
+  background-color: #f0f0f0;
+}
