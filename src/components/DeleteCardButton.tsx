@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppDispatch } from '../store/hooks';
 import { deleteCard, fetchBoardWithCards } from '../store/boardThunks';
 import toast from 'react-hot-toast';
+import './DeleteCardButton.css';
 
 interface DeleteCardButtonProps {
   cardId: string;
@@ -22,8 +23,8 @@ const DeleteCardButton: React.FC<DeleteCardButtonProps> = ({ cardId, boardId }) 
 };
 
   return (
-    <button onClick={handleDelete} className="bg-red-500 text-white px-2 py-1 rounded-xl text-sm">
-      Delete
+    <button onClick={handleDelete} className="delete-card-button">
+      🗑️
     </button>
   );
 };

@@ -119,104 +119,106 @@ const BoardsList = () => {
 
           <div className="boards-columns">
             {statuses.map((status) => (
-              <Droppable
-                droppableId={status}
-                key={status}
-                isDropDisabled={!selectedBoardId || !activeBoard}
-                isCombineEnabled={false}
-                ignoreContainerClipping={false}
-              >
-                {(provided) => (
-                  <div
-                    {...provided.droppableProps}
-                    ref={provided.innerRef}
-                    className="boards-column"
-                  >
-                    <h3 className="boards-column-title">
-                      {status === 'todo' ? 'To Do' : status === 'inprogress' ? 'In Progress' : 'Done'}
-                    </h3>
+              <div key={status} className="boards-column-wrapper">
+                <h3 className="boards-column-title">
+                  {status === 'todo' ? 'To Do' : status === 'inprogress' ? 'In Progress' : 'Done'}
+                </h3>
 
-                    {activeBoardCards
-                      .filter((card) => card.status === status)
-                      .map((card, index) => (
-                        <Draggable draggableId={card._id} index={index} key={card._id}>
-                          {(provided) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              className={`boards-card ${editingCardId === card._id ? 'editing' : ''}`}
-                            >
-                              {editingCardId === card._id ? (
-                                <form
-                                  onSubmit={(e) => {
-                                    e.preventDefault();
-                                    saveCard(card._id);
-                                  }}
-                                  className="boards-add-card-form"
-                                >
-                                  <input
-                                    type="text"
-                                    value={editTitle}
-                                    onChange={(e) => setEditTitle(e.target.value)}
-                                    placeholder="Card title"
-                                    required
-                                    className="boards-add-card-input"
-                                  />
-                                  <input
-                                    type="text"
-                                    value={editDescription}
-                                    onChange={(e) => setEditDescription(e.target.value)}
-                                    placeholder="Card description"
-                                    required
-                                    className="boards-add-card-input"
-                                  />
-                                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <button type="submit" className="boards-add-card-button">Save</button>
-                                    <button
-                                      type="button"
-                                      className="boards-add-card-button"
-                                      onClick={() => setEditingCardId(null)}
-                                    >
-                                      Cancel
-                                    </button>
-                                  </div>
-                                </form>
-                              ) : (
-                                <>
-                                  <h4 className="boards-card-title">{card.title}</h4>
-                                  <p className="boards-card-description">{card.description}</p>
-                                  <div className="boards-card-actions">
-                                    <button
-                                      onClick={() => startEditing(card._id, card.title, card.description)}
-                                      className="boards-card-edit"
-                                    >
-                                      ✏️
-                                    </button>
-                                    <DeleteCardButton cardId={card._id} boardId={selectedBoardId} />
-                                  </div>
-                                </>
-                              )}
-                            </div>
-                          )}
-                        </Draggable>
-                      ))}
+                <Droppable
+                  droppableId={status}
+                  isDropDisabled={!selectedBoardId || !activeBoard}
+                  isCombineEnabled={false}
+                  ignoreContainerClipping={false}
+                >
+                  {(provided) => (
+                    <div
+                      {...provided.droppableProps}
+                      ref={provided.innerRef}
+                      className="boards-column"
+                    >
+                      {activeBoardCards
+                        .filter((card) => card.status === status)
+                        .map((card, index) => (
+                          <Draggable draggableId={card._id} index={index} key={card._id}>
+                            {(provided) => (
+                              <div
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                                {...provided.dragHandleProps}
+                                className={`boards-card ${editingCardId === card._id ? 'editing' : ''}`}
+                              >
+                                {editingCardId === card._id ? (
+                                  <form
+                                    onSubmit={(e) => {
+                                      e.preventDefault();
+                                      saveCard(card._id);
+                                    }}
+                                    className="boards-add-card-form"
+                                  >
+                                    <input
+                                      type="text"
+                                      value={editTitle}
+                                      onChange={(e) => setEditTitle(e.target.value)}
+                                      placeholder="Card title"
+                                      required
+                                      className="boards-add-card-input"
+                                    />
+                                    <input
+                                      type="text"
+                                      value={editDescription}
+                                      onChange={(e) => setEditDescription(e.target.value)}
+                                      placeholder="Card description"
+                                      required
+                                      className="boards-add-card-input"
+                                    />
+                                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                      <button type="submit" className="boards-add-card-button">Save</button>
+                                      <button
+                                        type="button"
+                                        className="boards-add-card-button"
+                                        onClick={() => setEditingCardId(null)}
+                                      >
+                                        Cancel
+                                      </button>
+                                    </div>
+                                  </form>
+                                ) : (
+                                  <>
+                                    <h4 className="boards-card-title">{card.title}</h4>
+                                    <p className="boards-card-description">{card.description}</p>
+                                    <div className="boards-card-actions">
+                                      <button
+                                        onClick={() => startEditing(card._id, card.title, card.description)}
+                                        className="boards-card-edit"
+                                      >
+                                        ✏️
+                                      </button>
+                                      <DeleteCardButton cardId={card._id} boardId={selectedBoardId} />
+                                    </div>
+                                  </>
+                                )}
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
 
-                    {provided.placeholder}
+                      {provided.placeholder}
 
-                    <div className="board-add-card">
-                      <CreateCardForm
-                        boardId={selectedBoardId}
-                        status={status}
-                        existingCards={activeBoardCards.filter(card => card.status === status)}
-                      />
+                      <div className="board-add-card">
+                        <CreateCardForm
+                          boardId={selectedBoardId}
+                          status={status}
+                          existingCards={activeBoardCards.filter(card => card.status === status)}
+                        />
+                      </div>
+
                     </div>
-
-                  </div>
-                )}
-              </Droppable>
+                  )}
+                </Droppable>
+              </div>
             ))}
           </div>
+
         </DragDropContext>
       )}
     </div>
